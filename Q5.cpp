@@ -1,36 +1,27 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
 using namespace std;
 
-vector<int> replaceEvenDigits(int n) {
-    vector<int> result;
+int main()
+{
+    int n, digit, result = 0, place = 1;
 
-    while (n > 0) {
-        int digit = n % 10;
+    cout << "Enter a number: ";
+    cin >> n;
+
+    while (n > 0)
+    {
+        digit = n % 10;
 
         if (digit % 2 == 0)
             digit = 0;
 
-        result.push_back(digit);
+        result = result + digit * place;
 
+        place = place * 10;
         n = n / 10;
     }
 
-    reverse(result.begin(), result.end());
-
-    return result;
-}
-
-int main() {
-    int n;
-    cin >> n;
-
-    vector<int> result = replaceEvenDigits(n);
-
-    for (int digit : result) {
-        cout << digit << " ";
-    }
+    cout << "Converted number = " << result;
 
     return 0;
 }
